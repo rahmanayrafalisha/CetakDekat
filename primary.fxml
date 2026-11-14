@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.mycompany.cetakdekat.PrimaryController"
+      alignment="CENTER"
+      spacing="20"
+      prefWidth="850"
+      prefHeight="700"
+      style="-fx-background-color: #F0F7FF;">
+
+    <padding>
+        <Insets top="35" right="65" bottom="35" left="65"/>
+    </padding>
+
+    <!-- HEADER -->
+    <VBox alignment="CENTER" spacing="8">
+
+        <Label text="CETAKDEKAT"
+               style="-fx-font-size: 34px;
+                      -fx-font-weight: bold;
+                      -fx-text-fill: #477DA8;"/>
+
+        <Label text="Temukan layanan fotocopy dan cetak terdekat"
+               style="-fx-font-size: 15px;
+                      -fx-text-fill: #71869A;"/>
+
+    </VBox>
+
+    <Separator style="-fx-background-color: #D5E5F3;"/>
+
+    <!-- FORM PERHITUNGAN -->
+    <VBox spacing="20"
+          maxWidth="650"
+          style="-fx-background-color: white;
+                 -fx-background-radius: 18;
+                 -fx-border-color: #DCEAF5;
+                 -fx-border-radius: 18;
+                 -fx-border-width: 1;">
+
+        <padding>
+            <Insets top="30" right="35" bottom="30" left="35"/>
+        </padding>
+
+        <Label text="HITUNG ESTIMASI BIAYA"
+               style="-fx-font-size: 21px;
+                      -fx-font-weight: bold;
+                      -fx-text-fill: #477DA8;"/>
+
+        <Label text="Isi data berikut untuk mengetahui estimasi biaya layanan."
+               style="-fx-font-size: 13px;
+                      -fx-text-fill: #8495A5;"/>
+
+        <GridPane hgap="25" vgap="22">
+
+            <columnConstraints>
+                <javafx.scene.layout.ColumnConstraints minWidth="140"/>
+                <javafx.scene.layout.ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <Label text="Tempat Fotocopy"
+                   style="-fx-font-size: 14px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #526B80;"
+                   GridPane.columnIndex="0"
+                   GridPane.rowIndex="0"/>
+
+            <ComboBox fx:id="pilihanTempat"
+                      promptText="Pilih tempat fotocopy"
+                      maxWidth="Infinity"
+                      prefHeight="40"
+                      GridPane.columnIndex="1"
+                      GridPane.rowIndex="0"/>
+
+            <Label text="Jenis Layanan"
+                   style="-fx-font-size: 14px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #526B80;"
+                   GridPane.columnIndex="0"
+                   GridPane.rowIndex="1"/>
+
+            <ComboBox fx:id="pilihanLayanan"
+                      promptText="Pilih jenis layanan"
+                      maxWidth="Infinity"
+                      prefHeight="40"
+                      GridPane.columnIndex="1"
+                      GridPane.rowIndex="1"/>
+
+            <Label text="Jumlah Lembar"
+                   style="-fx-font-size: 14px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #526B80;"
+                   GridPane.columnIndex="0"
+                   GridPane.rowIndex="2"/>
+
+            <TextField fx:id="jumlahLembar"
+                       promptText="Masukkan jumlah lembar"
+                       prefHeight="40"
+                       GridPane.columnIndex="1"
+                       GridPane.rowIndex="2"/>
+
+        </GridPane>
+
+        <Button fx:id="tombolHitung"
+                text="HITUNG BIAYA"
+                onAction="#hitungBiaya"
+                maxWidth="Infinity"
+                prefHeight="45"
+                style="-fx-background-color: #F4BFD0;
+                       -fx-text-fill: #68485A;
+                       -fx-font-size: 14px;
+                       -fx-font-weight: bold;
+                       -fx-background-radius: 10;
+                       -fx-cursor: hand;"/>
+
+    </VBox>
+
+    <!-- HASIL PERHITUNGAN -->
+    <VBox spacing="15"
+          maxWidth="650"
+          style="-fx-background-color: #E3F1FC;
+                 -fx-background-radius: 18;
+                 -fx-border-color: #C9E0F2;
+                 -fx-border-radius: 18;
+                 -fx-border-width: 1;">
+
+        <padding>
+            <Insets top="25" right="35" bottom="25" left="35"/>
+        </padding>
+
+        <Label text="HASIL PERHITUNGAN"
+               style="-fx-font-size: 19px;
+                      -fx-font-weight: bold;
+                      -fx-text-fill: #477DA8;"/>
+
+        <GridPane hgap="25" vgap="13">
+
+            <columnConstraints>
+                <javafx.scene.layout.ColumnConstraints minWidth="140"/>
+                <javafx.scene.layout.ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <Label text="Nama Tempat"
+                   GridPane.columnIndex="0"
+                   GridPane.rowIndex="0"/>
+
+            <Label fx:id="hasilTempat"
+                   text="-"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="0"/>
+
+            <Label text="Jenis Layanan"
+                   GridPane.columnIndex="0"
+                   GridPane.rowIndex="1"/>
+
+            <Label fx:id="hasilLayanan"
+                   text="-"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="1"/>
+
+            <Label text="Jumlah"
+                   GridPane.columnIndex="0"
+                   GridPane.rowIndex="2"/>
+
+            <Label fx:id="hasilJumlah"
+                   text="-"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="2"/>
+
+            <Label text="Total Biaya"
+                   style="-fx-font-weight: bold;"
+                   GridPane.columnIndex="0"
+                   GridPane.rowIndex="3"/>
+
+            <Label fx:id="hasilTotal"
+                   text="Rp0"
+                   style="-fx-font-size: 22px;
+                          -fx-font-weight: bold;
+                          -fx-text-fill: #477DA8;"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="3"/>
+
+        </GridPane>
+
+    </VBox>
+
+    <!-- FOOTER -->
+    <Label text="CetakDekat | Universitas Lampung"
+           style="-fx-font-size: 11px;
+                  -fx-text-fill: #8299AC;"/>
+
+</VBox>
